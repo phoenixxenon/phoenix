@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Securely make online payments with IntaSend</title>
+    <link rel="shortcut icon" type="image/jpg" href="https://intasend-prod-static.s3.amazonaws.com/img/favicon-16x16.png" />
+
+    <!-- MAIN CSS -->
+
+    <link href="https://intasend-prod-static.s3.amazonaws.com/css/tailwind.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://intasend-prod-static.s3.amazonaws.com/css/theme.css">
+    <link rel="stylesheet" href="https://intasend-prod-static.s3.amazonaws.com/css/payscreens.css">
+
+
+    <style>
+        .checkout-label {
+            color: #000000 !important;
+        }
+
+        .checkout-screen {
+            background-color: #fcf8f7 !important;
+        }
+
+        .btn-primary {
+            background-color: #056BD5 !important;
+            color: #fff !important;
+            border-color: #056BD5 !important;
+        }
+
+        input,
+        select {
+            background-color: #FFFFFF !important;
+            border-color: #CCCCCC !important;
+            color: #000 !important;
+            border-radius: 10px !important;
+        }
+    </style>
+
+
+</head>
+
+<body class="flex flex-col lg:flex-row overflow-auto checkout-screen">
+
+    <div class="flex flex-1 flex-col lg:h-screen py-8 lg:py-20 text-center lg:text-left lg:justify-between ">
+        <div class="lg:px-20 flex flex-col justify-center lg:justify-between">
+
+            <div class="flex lg:block justify-center items-center">
+
+
+
+            </div>
+
+            <div class="lg:block flex flex-col mt-4 checkout-label">
+
+                <h2 class="font-light text-xl lg:text-2xl capitalize">Pay xenon Tech</h2>
+                <div class="font-bold text-2xl">
+                    KES 50
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="lg:px-20 hidden flex flex-row lg:flex items-center opacicty-70 text-sm text-gray-500">
+            <div class=" text-center border-r">
+                <a target="_blank" href="https://intasend.com/" class="mr-4">powered by <span
+                        class="font-bold">IntaSend</span></a>
+            </div>
+            <div class="ml-4 mr-4 text-center ">
+                <a href="https://intasend.com/terms/" target="_blank" class="border-rignt ">Terms</span></a>
+            </div>
+            <div class="text-center ">
+                <a href="https://intasend.com/privacy-policy/" target="_blank" class="border-rignt ">Privacy</span></a>
+            </div>
+
+        </div>
+
+        <!-- <div class="left-watermark">&nbsp;</div> -->
+    </div>
+
+    <div class="flex flex-1 flex-col shadow">
+        <div class="self-center w-full py-8 lg:py-20 justify-between space-y-6">
+
+            <div class="w-full flex px-4 lg:px-8 justify-center">
+                <div class="flex flex-col w-full lg:w-2/3 z-10">
+
+                    <div class=" px-4 lg:px-8 py-6 flex flex-row space-x-2">
+                        <div class="flex flex-col justify-center">
+                            <h1 class="font-semibold checkout-label text-lg">Check Out</h1>
+                            <p class="checkout-label text-sm">Ref: <span>Injector 3 Days</span></p>
+                        </div>
+                    </div>
+
+                    <div class="px-4 lg:px-8 rounded-b-lg">
+
+                        <form action="javascript:;" name="paymentForm">
+
+                            <div class="flex flex-row justify-between">
+                                <!-- <div class="text-sm checkout-label flex flex-col justify-center">Amount</div>
+                    <div class="text-2xl font-light">KES 50</div> -->
+                                <input type="hidden" value="50" id="amount">
+                                <input type="hidden" value="KES" id="currency">
+                            </div>
+
+                            <div class="pt-2 pb-3">
+                                <h2 class="my-1 checkout-label">Your Details</h2>
+                                <!-- <div class="border-b border-gray-200"></div> -->
+                            </div>
+                            <div class="mb-2 flex flex-col lg:flex-row">
+                                <div class="w-full lg:w-1/2 lg:pr-1">
+                                    <!-- <div class="mb-1">
+                            <label class="text-base block" for="first_name">First Name *</label>
+                        </div> -->
+                                    <input type="" class=" bg-white  focus:outline-none focus:shadow-outline border border-gray-300 focus:border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-normal" name="first_name" value="" id="first_name" placeholder="First name" autocomplete="off">
+                                    <!--  -->
+                                    <!--  -->
+                                </div>
+                                <div class="w-full mt-2 lg:mt-0 lg:w-1/2">
+                                    <!-- <div class="mb-1">
+                            <label class="text-base block" for="last_name">Last Name *</label>
+                        </div> -->
+                                    <input type="" class=" bg-white  focus:outline-none focus:shadow-outline border border-gray-300 focus:border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-normal" name="last_name" value="" id="last_name" placeholder="Last name" autocomplete="off">
+                                    <!--  -->
+                                    <!--  -->
+                                </div>
+                            </div>
+                            <div class="mb-2 lg:mt-4">
+                                <!-- <div class="mb-1">
+                        <label class="text-base block" for="email">Email *</label>
+                    </div> -->
+                                <input type="email" class=" bg-white  focus:outline-none focus:shadow-outline border border-gray-300 focus:border-gray-500 rounded py-2 px-3 block w-full appearance-none leading-normal" name="email" value="" id="email" placeholder="Email" autocomplete="off">
+                                <!--  -->
+                                <!--  -->
+                            </div>
+
+
+                            <div class="text-right my-4">
+
+                                <button type="submit" class="btn btn-primary btn-block">Pay KES 50</button>
+
+                            </div>
+
+                            <div class="text-center text-sm checkout-label mt-2">
+                                If you have any questions, contact <a href="/cdn-cgi/l/email-protection#f990949498978c9c95948c979c979ccacab99e94989095d79a9694" class="text-primary"><span class="__cf_email__" data-cfemail="a5ccc8c8c4cbd0c0c9c8d0cbc0cbc09696e5c2c8c4ccc98bc6cac8">[email&#160;protected]</span></a>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="lg:px-8 hidden lg:block pt-4">
+                        <img src="https://intasend-prod-static.s3.amazonaws.com/img/payscreens/svg/trust_badge2.svg" alt="IntaSend-Trust-Badge-Light">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="right-watermark">&nbsp;</div>
+    <!-- Bootstrap Core JavaScript -->
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous" type="2dc22f7e82146509cc3242a0-text/javascript">
+    </script>
+
+    <!-- IntaSend Inline SDK Setup -->
+    <script src="https://unpkg.com/intasend-inlinejs-sdk@4.0.7/build/intasend-inline.js" type="2dc22f7e82146509cc3242a0-text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" type="2dc22f7e82146509cc3242a0-text/javascript"></script>
+    <script type="2dc22f7e82146509cc3242a0-text/javascript">
+        $(document).ready(function() {
+            let intaSend = new window.IntaSend({
+                publicAPIKey: "ISPubKey_live_bb4db0ab-e27f-46af-a413-85f9107a2b89",
+                redirectURL: "https://drive.google.com/file/d/1yc05mESdVBgyGV-VUvNmFGIq5oqaC5mJ/view?usp=drivesdk",
+                live: "live".toLowerCase() === 'live'
+            })
+
+            $("form[name='paymentForm']").validate({
+                rules: {
+                    first_name: "required",
+                    last_name: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    amount: {
+                        required: true,
+                        number: true
+                    },
+                    currency: {
+                        required: true
+                    }
+                },
+                messages: {
+                    first_name: "First name is required",
+                    last_name: "Last name is required",
+                    email: "Please enter a valid email address",
+                    amount: "Amount is required",
+                    currency: "Currency is required"
+                },
+                submitHandler: function(form) {
+                    let qty = parseInt($("#qty").val()) || 1
+                    let amount = $("#amount").val()
+                    amount = amount * qty
+                    if (amount <= 0) {
+                        return alert(
+                            "Total amount must be greater than zero. Also, check and ensure the quantity field is not a zero or empty.Should default to 1."
+                        )
+                    }
+
+                    intaSend.run({
+                        'first_name': $("#first_name").val(),
+                        'last_name': $("#last_name").val(),
+                        'amount': amount,
+                        'email': $("#email").val(),
+                        'currency': $("#currency").val(),
+                        'api_ref': "ISL_f4f954ad-c86a-42c0-89d3-795bb6d58b49",
+                        'mobile_tarrif': "BUSINESS-PAYS",
+                        'card_tarrif': "BUSINESS-PAYS"
+                    })
+                }
+            })
+        })
+    </script>
+
+    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="2dc22f7e82146509cc3242a0-|49" defer></script>
+</body>
+
+</html>

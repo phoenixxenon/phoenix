@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Xenon Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a12;
+            --secondary-bg: #141420;
+            --accent-color: #ff6b35;
+            --accent-hover: #ff8c5a;
+            --text-color: #ffffff;
+            --text-muted: #b8b8b8;
+            --card-bg: rgba(20, 20, 32, 0.8);
+            --card-hover: rgba(30, 30, 48, 0.9);
+            --glass-blur: 10px;
+            --transition-speed: 0.3s;
+            --border-radius: 8px;
+            --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --box-shadow-hover: 0 12px 40px rgba(255, 107, 53, 0.3);
+            --gradient: linear-gradient(135deg, #ff6b35 0%, #ff3860 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://i.imgur.com/JQlE5fM.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 18, 0.85);
+            z-index: -1;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass effect */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--box-shadow);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .glass:hover {
+            background: var(--card-hover);
+            box-shadow: var(--box-shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.2;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(10, 10, 18, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+
+        .logo::after {
+            content: '𓅓';
+            margin-left: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        nav.desktop-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav.desktop-nav a {
+            position: relative;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        nav.desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav.desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        nav.desktop-nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav.desktop-nav a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-btn.active {
+            transform: rotate(90deg);
+        }
+
+        /* Mobile navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--secondary-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 80px 30px;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Main content */
+        main {
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Pricing section styles */
+        .pricing-header {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .app-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .selector-btn {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .selector-btn.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .selector-btn:hover:not(.active) {
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .pricing-section {
+            display: none;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .price-card {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--accent-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .buy-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Payment modal styles */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            animation: glowPulse 2s infinite;
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px var(--accent-color); }
+            50% { box-shadow: 0 0 20px var(--accent-color); }
+            100% { box-shadow: 0 0 5px var(--accent-color); }
+        }
+
+        .modal-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            padding: 20px 0;
+        }
+
+        .modal-body p, .modal-body li {
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hwid-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .hwid-section h4 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .hwid-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .hwid-input-container input {
+            flex: 1;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .paste-btn {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .paste-btn:hover {
+            background: rgba(255, 107, 53, 0.4);
+        }
+
+        .hwid-note {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-top: 10px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .cancel-btn, .proceed-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .proceed-btn {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .proceed-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Footer */
+        .footer-bottom {
+            background: var(--secondary-bg);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/JQlE5fM.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo h3::after {
+            content: '𓅓';
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .footer-section h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul a {
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .footer-section ul a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-right: 12px;
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 107, 53, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+        .trusted-apps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .trusted-apps img {
+            width: 100%;
+            height: 45px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+
+        .trusted-apps img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-header {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav.desktop-nav {
+                display: none;
+            }
+
+            .app-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .selector-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .pricing-section {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .cancel-btn, .proceed-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="Xenon Tech">
+                <h3>Xenon Tech</h3>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Apps</a>
+                <a href="price.html" class="active">Pricing</a>
+                <a href="contact.html">Contact</a>
+                <a href="sni.html">SNI HOST</a>
+            </nav>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="apps.html">Apps</a>
+            <a href="price.html" class="active">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="sni.html">SNI HOST</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="pricing-header glass animate__animated animate__fadeIn">
+                <h1>VPN Pricing Plans</h1>
+                <p>Choose the perfect plan for your needs and enjoy premium VPN services</p>
+                <div class="app-selector">
+                    <button class="btn selector-btn active" data-app="http-custom">HTTP Custom</button>
+                    <button class="btn selector-btn" data-app="http-injector">HTTP Injector</button>
+                    <button class="btn selector-btn" data-app="dark-tunnel">Dark Tunnel</button>
+                </div>
+            </section>
+
+            <!-- HTTP Custom Pricing -->
+            <section id="http-custom-pricing" class="pricing-section glass active animate__animated animate__fadeIn">
+                <h2>HTTP Custom Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-1">
+                        <h3>3 Days</h3>
+                        <div class="price">KSH 50</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/2634035f-a958-4569-8189-8c262dc5fb7a/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-2">
+                        <h3>1 Week</h3>
+                        <div class="price">KSH 100</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/06ff830a-4e89-4118-8b6d-8f343b5e71d1/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-3">
+                        <h3>1 Month</h3>
+                        <div class="price">KSH 300</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                            <li>Custom Configuration</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/5e6bbedb-9287-443a-872c-821dbf1003d7/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HTTP Injector Pricing -->
+            <section id="http-injector-pricing" class="pricing-section glass animate__animated animate__fadeIn">
+                <h2>HTTP Injector Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-1">
+                        <h3>3 Days</h3>
+                        <div class="price">KSH 50</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/f4f954ad-c86a-42c0-89d3-795bb6d58b49/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-2">
+                        <h3>1 Week</h3>
+                        <div class="price">KSH 100</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/9d086810-65b9-4290-ac0a-9b98bb092f78/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-3">
+                        <h3>1 Month</h3>
+                        <div class="price">KSH 300</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                            <li>Custom Configuration</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/73567abd-5eff-4178-9f68-5927489c6a67/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dark Tunnel Pricing -->
+            <section id="dark-tunnel-pricing" class="pricing-section glass animate__animated animate__fadeIn">
+                <h2>Dark Tunnel Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-1">
+                        <h3>3 Days</h3>
+                        <div class="price">KSH 50</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/c7fa9fed-a345-4f88-9590-276418c2adb4/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-2">
+                        <h3>1 Week</h3>
+                        <div class="price">KSH 100</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/84372285-4776-48ad-b9d5-ca02122ce484/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                    <div class="price-card glass animate__animated animate__fadeInUp animate-delay-3">
+                        <h3>1 Month</h3>
+                        <div class="price">KSH 300</div>
+                        <ul class="features">
+                            <li>Full Speed Access</li>
+                            <li>All Servers</li>
+                            <li>24/7 Support</li>
+                            <li>Priority Support</li>
+                            <li>Custom Configuration</li>
+                        </ul>
+                        <a href="https://payment.intasend.com/pay/4f767b10-63f0-4ebc-9e3c-de01be03930d/" class="btn buy-btn ripple pulse" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Purchase Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bottom">
+        <div class="footer-container">
+            <!-- Company Info Section -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="images/logo.jpeg" alt="Xenon Tech">
+                    <h3>Xenon Tech</h3>
+                </div>
+                <p class="company-desc">Rising from the ashes with premium VPN solutions for secure and unrestricted internet access.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="price.html">Pricing</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </ul>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> xenontech@gmail.com</li>
+                    <li><i class="fab fa-whatsapp"></i> WhatsApp: +254705470210</li>
+                    <li><i class="fab fa-telegram"></i> Telegram: @xenonlo</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                </ul>
+            </div>
+
+            <!-- Trusted By Section -->
+            <div class="footer-section trusted-section">
+                <h3>Trusted By</h3>
+                <div class="trusted-apps">
+                    <img src="images/hc.png" alt="HTTP Custom" title="HTTP Custom">
+                    <img src="images/http.jfif" alt="HTTP Injector" title="HTTP Injector">
+                    <img src="images/dark.png" alt="Dark Tunnel" title="Dark Tunnel">
+                    <img src="images/ev2ray.png" alt="ev2ray" title="ev2ray">
+                    <img src="images/opentunnel.jfif" alt="OpenTunnel" title="OpenTunnel">
+                    <img src="images/nvp.jfif" alt="NVP" title="NVP">
+                    <img src="images/psiphon.png" alt="Psiphon" title="Psiphon">
+                </div>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright">
+                <p>© 2024 Xenon Tech. All rights reserved. Phoenix symbol 𓅓 represents our rebirth in technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content glass">
+            <h3>🔒 Payment Instructions</h3>
+            <div class="modal-body">
+                <p>📱 Payment will be processed via STK Push M-PESA</p>
+                <p>📧 Config file will be sent to your email</p>
+                <p>⚠️ Please ensure:</p>
+                <ul>
+                    <li>✓ Your M-PESA number is correct</li>
+                    <li>✓ You have sufficient balance</li>
+                    <li>✓ Your email is valid</li>
+                </ul>
+
+                <div class="hwid-section">
+                    <h4>🔑 Device Information</h4>
+                    <div class="hwid-input-container">
+                        <input type="text" id="userHWID" placeholder="Enter your HWID/Device ID" required>
+                        <button id="pasteHWID" class="btn paste-btn">
+                            <i class="fas fa-paste"></i> Paste
+                        </button>
+                    </div>
+                    <p class="hwid-note">⚡ Your HWID/Device ID is required for activation</p>
+                </div>
+
+                <div class="modal-buttons">
+                    <button id="cancelPayment" class="btn cancel-btn">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button id="proceedPayment" class="btn proceed-btn">
+                        <i class="fas fa-check"></i> Proceed to Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // Ripple effect for buttons
+            const buttons = document.querySelectorAll('.ripple');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.getBoundingClientRect().left;
+                    const y = e.clientY - e.target.getBoundingClientRect().top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple-effect');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Handle hash-based navigation for pricing sections
+            function handleHash() {
+                const hash = window.location.hash.slice(1);
+                if (hash) {
+                    const appId = hash.replace('-pricing', '');
+
+                    // Update active states
+                    document.querySelectorAll('.selector-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.app === appId) {
+                            btn.classList.add('active');
+                        }
+                    });
+
+                    // Show selected pricing section
+                    document.querySelectorAll('.pricing-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    const targetSection = document.getElementById(hash);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+
+            // Handle initial load and hash changes
+            window.addEventListener('load', handleHash);
+            window.addEventListener('hashchange', handleHash);
+
+            // Update pricing display based on app selection
+            document.querySelectorAll('.selector-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const appId = e.target.dataset.app;
+                    if (appId) {
+                        // Update active states
+                        document.querySelectorAll('.selector-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+
+                        // Show selected pricing section
+                        const targetId = `${appId}-pricing`;
+                        document.querySelectorAll('.pricing-section').forEach(section => section.classList.remove('active'));
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.classList.add('active');
+                            window.location.hash = targetId;
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Handle purchase button clicks
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const paymentUrl = this.href;
+                    const modal = document.getElementById('paymentModal');
+                    modal.style.display = 'block';
+
+                    // Handle proceed button
+                    document.getElementById('proceedPayment').onclick = function() {
+                        const hwid = document.getElementById('userHWID').value;
+
+                        if (!hwid) {
+                            alert('Please fill in all required fields');
+                            return;
+                        }
+
+                        // Here you can add code to save the HWID
+                        // Then redirect to payment
+                        window.location.href = paymentUrl;
+                    };
+
+                    // Handle cancel button
+                    document.getElementById('cancelPayment').onclick = function() {
+                        modal.style.display = 'none';
+                    };
+
+                    // Handle paste button
+                    document.getElementById('pasteHWID').addEventListener('click', async function() {
+                        try {
+                            const text = await navigator.clipboard.readText();
+                            document.getElementById('userHWID').value = text;
+                        } catch (err) {
+                            console.error('Failed to read clipboard contents: ', err);
+                            alert('Failed to access clipboard. Please paste manually.');
+                        }
+                    });
+                });
+            });
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('paymentModal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            // Animate elements when they come into view
+            const animateOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        animateOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.price-card').forEach(card => {
+                animateOnScroll.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

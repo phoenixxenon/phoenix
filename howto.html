@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How-To Guides - Xenon Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a12;
+            --secondary-bg: #141420;
+            --accent-color: #ff6b35;
+            --accent-hover: #ff8c5a;
+            --text-color: #ffffff;
+            --text-muted: #b8b8b8;
+            --card-bg: rgba(20, 20, 32, 0.8);
+            --card-hover: rgba(30, 30, 48, 0.9);
+            --glass-blur: 10px;
+            --transition-speed: 0.3s;
+            --border-radius: 8px;
+            --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --box-shadow-hover: 0 12px 40px rgba(255, 107, 53, 0.3);
+            --gradient: linear-gradient(135deg, #ff6b35 0%, #ff3860 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://i.imgur.com/JQlE5fM.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 18, 0.85);
+            z-index: -1;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass effect */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--box-shadow);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .glass:hover {
+            background: var(--card-hover);
+            box-shadow: var(--box-shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.2;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(10, 10, 18, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+
+        .logo::after {
+            content: '𓅓';
+            margin-left: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        nav.desktop-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav.desktop-nav a {
+            position: relative;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        nav.desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav.desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        nav.desktop-nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav.desktop-nav a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-btn.active {
+            transform: rotate(90deg);
+        }
+
+        /* Mobile navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--secondary-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 80px 30px;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Main content */
+        main {
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* How-to articles section */
+        .how-to-section {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .article-card {
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
+            color: var(--accent-hover);
+            transform: translateX(5px);
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover, .page-link.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            max-width: 900px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-body {
+            line-height: 1.7;
+        }
+
+        .modal-body h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul, .modal-body ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer-bottom {
+            background: var(--secondary-bg);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/JQlE5fM.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo h3::after {
+            content: '𓅓';
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .footer-section h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul a {
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .footer-section ul a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            margin-right: 12px;
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 107, 53, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav.desktop-nav {
+                display: none;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 20px auto;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-content {
+                padding: 15px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="Xenon Tech">
+                <h3>Xenon Tech</h3>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="apps.html">Apps</a>
+                <a href="howto.html" class="active">How-To</a>
+                <a href="contact.html">Contact</a>
+                <a href="sni.html">SNI HOST</a>
+                <a href="speedtest.html">SPEEDTEST</a>
+            </nav>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="apps.html">Apps</a>
+            <a href="howto.html" class="active">How-To</a>
+            <a href="contact.html">Contact</a>
+            <a href="sni.html">SNI HOST</a>
+            <a href="speedtest.html">SPEEDTEST</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="how-to-section">
+                <div class="section-header animate__animated animate__fadeIn">
+                    <h2>How-To Guides</h2>
+                    <p>Step-by-step tutorials to help you get the most out of our services</p>
+                </div>
+
+                <div class="articles-grid">
+                    <!-- Article 1 -->
+                    <div class="article-card glass animate__animated animate__fadeInUp">
+                        <img src="images/howto-http-custom.jpg" alt="Slow DNS on HTTP Custom" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> October 31, 2024</span>
+                            <span><i class="far fa-eye"></i> 12,543 views</span>
+                        </div>
+                        <h3>Slow DNS on HTTP Custom</h3>
+                        <p>How to Configure Slow DNS on HTTP Custom for Free Internet 2024</p>
+                        <div class="article-tags">
+                            <span class="tag">http custom</span>
+                            <span class="tag">FREENET</span>
+                            <span class="tag">HOW TO</span>
+                        </div>
+                        <a class="read-more" onclick="openModal('modal1')">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Article 2 -->
+                    <div class="article-card glass animate__animated animate__fadeInUp animate__delay-1s">
+                        <img src="images/howto-v2ray.jpg" alt="V2Ray on Dark Tunnel" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> September 22, 2024</span>
+                            <span><i class="far fa-eye"></i> 9,876 views</span>
+                        </div>
+                        <h3>V2Ray on Dark Tunnel</h3>
+                        <p>How to Configure V2Ray on Dark Tunnel VPN for Free Internet</p>
+                        <div class="article-tags">
+                            <span class="tag">FREENET</span>
+                            <span class="tag">HOW TO</span>
+                        </div>
+                        <a class="read-more" onclick="openModal('modal2')">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="article-card glass animate__animated animate__fadeInUp animate__delay-2s">
+                        <img src="images/howto-wordpress.jpg" alt="WordPress Migration" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> July 23, 2024</span>
+                            <span><i class="far fa-eye"></i> 7,432 views</span>
+                        </div>
+                        <h3>Migrate Your WordPress Website</h3>
+                        <p>How to Migrate Your WordPress Website to a New Domain for Free Using Updraft Plus in 2024</p>
+                        <div class="article-tags">
+                            <span class="tag">HOW TO</span>
+                            <span class="tag">WEB HOSTING</span>
+                        </div>
+                        <a class="read-more" onclick="openModal('modal3')">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Article 4 -->
+                    <div class="article-card glass animate__animated animate__fadeInUp">
+                        <img src="images/howto-v2ray-pc.jpg" alt="V2Ray on PC" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 30, 2024</span>
+                            <span><i class="far fa-eye"></i> 15,209 views</span>
+                        </div>
+                        <h3>V2Ray on PC</h3>
+                        <p>How to Use V2Ray on PC (with V2RayN) quick and easy setup</p>
+                        <div class="article-tags">
+                            <span class="tag">HOW TO</span>
+                            <span class="tag">FREENET</span>
+                        </div>
+                        <a class="read-more" onclick="openModal('modal4')">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Article 5 -->
+                    <div class="article-card glass animate__animated animate__fadeInUp animate__delay-1s">
+                        <img src="images/howto-rdp.jpg" alt="Windows 11 RDP" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 30, 2024</span>
+                            <span><i class="far fa-eye"></i> 21,845 views</span>
+                        </div>
+                        <h3>Windows 11 RDP</h3>
+                        <p>How to create a free Windows 11 RDP</p>
+                        <div class="article-tags">
+                            <span class="tag">VPS/RPD</span>
+                            <span class="tag">HOW TO</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Article 6 - Placeholder for additional content -->
+                    <div class="article-card glass animate__animated animate__fadeInUp animate__delay-2s">
+                        <img src="images/howto-placeholder.jpg" alt="More Tutorials" class="article-image">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> Coming Soon</span>
+                            <span><i class="far fa-eye"></i> 0 views</span>
+                        </div>
+                        <h3>More Tutorials Coming</h3>
+                        <p>Stay tuned for more in-depth guides and tutorials</p>
+                        <div class="article-tags">
+                            <span class="tag">HOW TO</span>
+                            <span class="tag">TUTORIALS</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <span>...</span>
+                    <a href="#" class="page-link">10</a>
+                    <a href="#" class="page-link">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for first article -->
+    <div id="modal1" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <div class="modal-header">
+                <h2>Slow DNS on HTTP Custom</h2>
+                <div class="modal-meta">
+                    <span><i class="far fa-calendar-alt"></i> October 31, 2024</span>
+                    <span><i class="far fa-eye"></i> 12,543 views</span>
+                </div>
+                <div class="modal-tags">
+                    <span class="tag">http custom</span>
+                    <span class="tag">FREENET</span>
+                    <span class="tag">HOW TO</span>
+                </div>
+            </div>
+            <img src="card-3.jpeg" alt="Slow DNS on HTTP Custom" class="modal-image">
+            <div class="modal-body">
+                <p>Free internet access has gained immense popularity due to the growing reliance on online services and high data costs. One method that has proven effective in accessing the internet without incurring charges is Slow DNS. While not the fastest, this method allows users to bypass restrictions and connect to the web at minimal or no cost. Paired with the powerful and versatile HTTP Custom app, setting up Slow DNS on HTTP Custom can be a straightforward and accessible solution for free internet enthusiasts.</p>
+                
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li>What is Slow DNS?</li>
+                    <li>How Does Slow DNS Work?</li>
+                    <li>Configuring Slow DNS on HTTP Custom</li>
+                    <li>Creating a Slow DNS server</li>
+                    <li>Installing HTTP Custom</li>
+                    <li>Setting Up Slow DNS on HTTP Custom​</li>
+                    <li>Testing the Connection</li>
+                    <li>Video Tutorial</li>
+                    <li>Security Considerations</li>
+                    <li>Protecting Your Data</li>
+                    <li>Understanding Risks with Slow DNS</li>
+                    <li>Frequently Asked Questions (FAQs)</li>
+                    <li>Is Slow DNS Legal?</li>
+                    <li>Can Slow DNS Provide Unlimited Data?</li>
+                    <li>Conclusion</li>
+                    <li>Also check out:</li>
+                </ul>
+                
+                <h3>What is Slow DNS?</h3>
+                <p>Slow DNS is a tunneling method that allows users to access the internet by redirecting traffic through the DNS (Domain Name System) server. DNS primarily translates domain names (like www.google.com) into IP addresses that your computer or device can understand. Slow DNS uses this system to trick internet service providers (ISPs) by transferring small packets of data through the DNS queries.</p>
+                
+                <p>Since many ISPs leave DNS ports open to facilitate the smooth resolution of domain names, Slow DNS leverages this gap to access the internet, albeit at a limited speed.</p>
+                
+                <h3>How Does Slow DNS Work?</h3>
+                <p>Slow DNS exploits the fact that DNS queries are allowed to pass through most ISPs, even when other forms of internet access are restricted. Typically, a DNS query involves sending a small request for domain resolution, and the DNS server responds with the corresponding IP address. With Slow DNS, instead of merely requesting IP addresses, small amounts of data are embedded into the DNS queries. This allows users to tunnel their traffic through these DNS queries, effectively enabling limited browsing, messaging, and other online activities.</p>
+                
+                <p>However, the reason it's referred to as "Slow" DNS is because the speed of data transfer through DNS tunneling is quite slow, limited by the size of the DNS queries and responses. This method is best suited for lightweight internet activities, such as checking emails or basic web browsing.</p>
+                
+                <h3>Configuring Slow DNS on HTTP Custom</h3>
+                <h4>Creating a Slow DNS server</h4>
+                <p>To configure Slow DNS on HTTP custom you will need a slow DNS server.</p>
+                
+                <p>The server can be created on the following websites:</p>
+                <ul>
+                    <li>LionSSH</li>
+                    <li>SSHocean</li>
+                    <li>ServerSSH</li>
+                </ul>
+                
+                <p>I will be using LionSSH for this guide.</p>
+                
+                <p>On the Dark SSH website:</p>
+                <ol>
+                    <li>Select any server</li>
+                    <li>Click on Create account</li>
+                    <li>Put any username and password of your choice</li>
+                    <li>Verify that you are not a robot</li>
+                    <li>Click on Create Account</li>
+                </ol>
+                
+                <h4>Installing HTTP Custom</h4>
+                <p>HTTP Custom is a versatile VPN-like app designed to offer flexible tunneling protocols, including HTTP, SSL, and DNS tunneling. It is particularly well-suited for users who need to connect to the internet through unconventional means, such as Slow DNS. The app's user-friendly interface, combined with its advanced features like custom payloads, SSH, and DNS tunneling support, makes it an ideal choice for those looking to set up Slow DNS for free internet.</p>
+                
+                <p>Download the app using the link below:</p>
+                <p><a href="#" style="color: var(--accent-color);">Click here to download HTTP Custom</a></p>
+                
+                <h4>Setting Up Slow DNS on HTTP Custom​</h4>
+                <ol>
+                    <li>Open the HTTP custom app</li>
+                    <li>Click on slow DNS</li>
+                    <li>Replace ip:port@user:pass as indicated in the image below</li>
+                    <li>Click on the puzzle icon and select SlowDNS settings</li>
+                    <li>Under Domain Name System (DNS): 8.8.8.8</li>
+                    <li>Under Nameserver (NS) and Public key (Pubkey) see the example below</li>
+                    <li>Click Apply & Connect</li>
+                </ol>
+                
+                <h4>Testing the Connection</h4>
+                <p>Once your configuration is complete, open a web browser or a messaging app to see if you can send and receive data. The connection speed will be slow, so focus on lightweight tasks like browsing text-based websites or using chat applications.</p>
+                
+                <h3>Video Tutorial</h3>
+                <p>Watch the video above for a simplified and well-explained tutorial on configuring Slow DNS on HTTP Custom.</p>
+                
+                <h3>Security Considerations</h3>
+                <h4>Protecting Your Data</h4>
+                <p>While Slow DNS allows for free internet access, it's important to ensure that your data is protected. Since DNS queries can be vulnerable to surveillance, consider using additional encryption methods such as SSH tunneling or VPN in conjunction with Slow DNS.</p>
+                
+                <h4>Understanding Risks with Slow DNS</h4>
+                <p>Although this method works in bypassing restrictions, it is not without risks. Some ISPs may monitor or block DNS tunneling traffic, and users should be aware that such methods may violate their service agreement.</p>
+                
+                <h3>Frequently Asked Questions (FAQs)</h3>
+                <h4>Is Slow DNS Legal?</h4>
+                <p>Slow DNS is legal in many countries, but the act of bypassing network restrictions may breach your ISP's terms of service.</p>
+                
+                <h4>Can Slow DNS Provide Unlimited Data?</h4>
+                <p>No, Slow DNS is limited in bandwidth and is not suitable for high-data activities. It's best for light browsing and messaging.</p>
+                
+                <h3>Conclusion</h3>
+                <p>Configuring Slow DNS on the HTTP Custom app is a practical solution for accessing free internet in regions where data restrictions exist, even though the connection is slow.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for second article -->
+    <div id="modal2" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <div class="modal-header">
+                <h2>V2Ray on Dark Tunnel</h2>
+                <div class="modal-meta">
+                    <span><i class="far fa-calendar-alt"></i> September 22, 2024</span>
+                    <span><i class="far fa-eye"></i> 9,876 views</span>
+                </div>
+                <div class="modal-tags">
+                    <span class="tag">FREENET</span>
+                    <span class="tag">HOW TO</span>
+                </div>
+            </div>
+            <img src="card-5.webp" alt="V2Ray on Dark Tunnel" class="modal-image">
+            <div class="modal-body">
+                <p>In this guide, I will show you how to set up V2Ray on Dark Tunnel VPN. By the end, you'll have a reliable, private, and high-speed internet connection that you can trust no matter where you are in the world.</p>
+                
+                <p>In today's world, privacy is essential when accessing the internet. Many people face challenges like slow connection speeds, limited data privacy, and vulnerability to hackers. If you're tired of unsecured internet access and want a way to surf the web faster while keeping your data safe, you're in the right place.</p>
+                
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li>Requirements for Setting up V2Ray on Dark Tunnel</li>
+                    <li>Configure V2Ray on Dark Tunnel VPN for Free Internet</li>
+                    <li>Creating a V2ray server</li>
+                    <li>Generating SNI Host</li>
+                    <li>Completing Server Configuration</li>
+                    <li>Installing Dark Tunnel VPN</li>
+                    <li>Configuring V2Ray on Dark Tunnel</li>
+                    <li>Video Tutorial</li>
+                </ul>
+                
+                <h3>Requirements for Setting up V2Ray on Dark Tunnel</h3>
+                <ul>
+                    <li>A V2Ray server</li>
+                    <li>The Dark Tunnel VPN application</li>
+                    <li>Sni bug host</li>
+                </ul>
+                <p>These tools will ensure that you get the most out of your V2Ray and VPN combination, providing you with an ultra-secure fast and free connection.</p>
+                
+                <h3>Configure V2Ray on Dark Tunnel VPN for Free Internet</h3>
+                <h4>Creating a V2ray server</h4>
+                <p>The first step to configuring V2Ray is setting up the server</p>
+                <ol>
+                    <li>Access SSH Ocean Website</li>
+                    <li>Open your browser and search for SSHOcean</li>
+                    <li>Click on services Once on the website, navigate to the services section</li>
+                </ol>
+                
+                <h4>Selecting the Right V2Ray Server</h4>
+                <p>Depending on your needs, you can choose from V2Ray, Vmess, or VLESS. In this guide, we'll use V2Ray.</p>
+                
+                <h4>Country Selection Tips</h4>
+                <p>Scroll through the list and pick the country where you'd like your server to be located. This step is important, as selecting a closer server will often result in a faster connection.</p>
+                
+                <h4>Create a Server</h4>
+                <p>After selecting a country, click on "Create" next to the server. It's vital to check that the server is online and has available accounts before proceeding.</p>
+                
+                <h3>Generating SNI Host</h3>
+                <p>SNI hosts play a key role in making your internet connection free. Here's how you can get one for free:</p>
+                
+                <h4>Using xenontech to Generate SNI</h4>
+                <p>To generate an SNI host, open a new tab and search for "xenon.com". Navigate to the site, and use the search tool to find the SNI Host Generator.</p>
+                
+                <h4>Copying and Applying SNI</h4>
+                <p>Once you've selected your country, click "Generate", copy the provided SNI, and return to the SSH Ocean website. Paste the generated SNI into the sniper host field. If the default doesn't work for your country, leave it blank and proceed.</p>
+                
+                <p><a href="#" style="color: var(--accent-color);">Click here to Generate Sni bug host</a></p>
+                
+                <h3>Completing Server Configuration</h3>
+                <p>Now that you have your SNI host:</p>
+                
+                <h4>Inputting Username and Other Details</h4>
+                <p>Fill in your desired username.</p>
+                
+                <h4>Inputting the SNI Host in SSH Ocean</h4>
+                <p>Paste the SNI you copied into the appropriate field on the SSH Ocean page.</p>
+                
+                <h4>Finalizing Server Settings</h4>
+                <p>Make sure to select Reverse SNI as Address before proceeding. If this option isn't working for your country, you can try leaving it as default.</p>
+                
+                <p>After completing these steps, click "Create Server". Once created, your new V2Ray server is ready for use.</p>
+                <p>Click on Copy Config WS</p>
+                
+                <h3>Installing Dark Tunnel VPN</h3>
+                <p>Now that you have a server, the next step is to install the Dark Tunnel VPN.</p>
+                
+                <h4>Downloading Dark Tunnel VPN from Play Store</h4>
+                <p>Open your Play Store app and search for Dark Tunnel VPN. Click "Install" and wait for it to finish downloading.</p>
+                
+                <h4>Initial Setup of the VPN</h4>
+                <p>After installation, open the app. You may choose to disable notifications if you prefer a more minimal setup.</p>
+                
+                <p><a href="#" style="color: var(--accent-color);">Click here to download Dark tunnel VPN</a></p>
+                
+                <h3>Configuring V2Ray on Dark Tunnel</h3>
+                <p>The most important step is importing your V2Ray settings into the VPN app.</p>
+                
+                <h4>Accessing VPN Configuration Settings</h4>
+                <p>In the Dark Tunnel VPN, tap Config, then choose Import.</p>
+                
+                <h4>Importing V2Ray Settings</h4>
+                <p>Select the configuration file you saved earlier, then click "OK" to confirm. The app will automatically import and configure the V2Ray settings.</p>
+                
+                <h4>Verifying Connection</h4>
+                <p>You don't need to tweak anything. Simply scroll down, click OK, and you'll be connected to the VPN.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for third article -->
+    <div id="modal3" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <div class="modal-header">
+                <h2>Migrate Your WordPress Website</h2>
+                <div class="modal-meta">
+                    <span><i class="far fa-calendar-alt"></i> July 23, 2024</span>
+                    <span><i class="far fa-eye"></i> 7,432 views</span>
+                </div>
+                <div class="modal-tags">
+                    <span class="tag">HOW TO</span>
+                    <span class="tag">WEB HOSTING</span>
+                </div>
+            </div>
+            <img src="wordpress.webp" alt="WordPress Migration" class="modal-image">
+            <div class="modal-body">
+                <p>Migrating a WordPress website to a new domain can seem like a daunting task, but with the right tools and steps, it can be done efficiently and without much hassle. One of the best tools for this job is the Updraft Plus plugin. In this guide, we'll walk you through the entire process using the Updraft Plus premium plugin, which we'll provide for free. Follow these steps to ensure a smooth migration.</p>
+                
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li>Migrate Your WordPress Website to a New Domain for Free Using Updraft Plus</li>
+                    <li>Step 1: Download Updraft Plus Premium for Free</li>
+                    <li>Step 2: Installing the Updraft Plus Plugin</li>
+                    <li>Step 3: Migrating Your WordPress Website to Another Domain</li>
+                    <li>Restoring the Backup on the New Website</li>
+                    <li>Final Checks and Tips</li>
+                    <li>Video Tutorial</li>
+                    <li>Also Check Out:</li>
+                </ul>
+                
+                <h3>Migrate Your WordPress Website to a New Domain for Free Using Updraft Plus</h3>
+                <h4>Step 1: Download Updraft Plus Premium for Free</h4>
+                <p>To migrate your website with Updraft Plus, you need to install the Updraft Plus plugin on both websites (the original website and the website you want to migrate to). We will be using our own Updraft Plus plugin, not the one found on WordPress plugins.</p>
+                
+                <p><a href="#" style="color: var(--accent-color);">Click here to download the Updraft Plus premium plugin for free.</a></p>
+                
+                <p>Once you have downloaded the plugin, make sure you have it saved in an easily accessible location on your computer, as you'll need it in the next step.</p>
+                
+                <h4>Step 2: Installing the Updraft Plus Plugin</h4>
+                <p>To install the Updraft Plus plugin on your WordPress websites, follow these detailed steps:</p>
+                
+                <ol>
+                    <li>Log in to Your WordPress Website: Begin by logging into the admin area of your WordPress site. You can do this by going to yoursite.com/wp-admin and entering your login credentials.</li>
+                    <li>Navigate to Plugins: On the navigation bar, find the Plugins section and click on Add New.</li>
+                    <li>Upload Plugin: Instead of searching for a plugin, click on Upload Plugin at the top of the page.</li>
+                    <li>Browse for the Plugin: Click on Choose File and browse to the folder where you downloaded the Updraft Plus premium plugin.</li>
+                    <li>Install the Plugin: Select the plugin file and click on Install Now. WordPress will automatically upload and install the plugin for you.</li>
+                    <li>Activate the Plugin: Once the installation is complete, click on Activate Plugin to enable Updraft Plus on your website.</li>
+                </ol>
+                
+                <p><strong>Note:</strong> Repeat these steps on both the original website and the new website to ensure Updraft Plus is ready for the migration process.</p>
+                
+                <h4>Step 3: Migrating Your WordPress Website to Another Domain</h4>
+                <p>With the Updraft Plus plugin installed on both websites, you're ready to start the migration process. This step involves creating a backup on the old website and then restoring it on the new website.</p>
+                
+                <h5>On the Old Website (the One You Want to Move)</h5>
+                <ol>
+                    <li>Access Updraft Plus Settings: On the navigation bar under Settings, find Updraft Plus Backups and select it.</li>
+                    <li>Initiate Migration/Clone: Click on Migrate/Clone to start the migration process.</li>
+                    <li>Send a Backup: Select Send a backup to another site and then click on Add a site.</li>
+                    <li>Enter Site Key: You will be prompted to enter a site key. This key allows the two websites to communicate and transfer data securely.</li>
+                </ol>
+                
+                <h5>On the New Website (the One You Want to Migrate To)</h5>
+                <ol>
+                    <li>Access Updraft Plus Settings: On the navigation bar under Settings, find Updraft Plus Backups and select it.</li>
+                    <li>Initiate Migration/Clone: Click on Migrate/Clone.</li>
+                    <li>Receive Backup: Select Receive backup from a remote site.</li>
+                    <li>Create Site Key: Click on Create Key to generate a unique key for your new site. Copy this key.</li>
+                </ol>
+                
+                <h5>On the Old Website (the One You Want to Move)</h5>
+                <ol>
+                    <li>Enter the Site Key: Go back to the old website and paste the copied key into the site key field. Then, click on Add Site.</li>
+                    <li>Send the Backup: Once you see a notification saying your website was successfully added, click on Send.</li>
+                    <li>Choose Backup Options: You will be asked whether you want to send an existing backup or create a new backup. If you don't have an existing backup, click on Create and send a new backup.</li>
+                    <li>Select Backup Content: Decide what you want to include in the backup. To migrate the entire website, leave the default options unchanged and click on Send.</li>
+                </ol>
+                
+                <p>The backup process will begin, and the data will be sent to the new site. This process typically takes less than a minute, but it may take longer depending on the size of your website.</p>
+                
+                <h3>Restoring the Backup on the New Website</h3>
+                <ol>
+                    <li>Access Updraft Plus Settings: On the navigation bar under Settings, find Updraft Plus Backups and select it.</li>
+                    <li>Backup/Restore: Click on Backup/Restore.</li>
+                    <li>Restore the Backup: Scroll down to see your backup, then click on Restore.</li>
+                    <li>Select Restoration Options: Choose all the given options to ensure a complete restoration. Then, click on Restore.</li>
+                    <li>Finalize the Restoration: Follow any additional prompts to complete the restoration process.</li>
+                </ol>
+                
+                <p>Once the restoration is complete, navigate to your new website. You should now see that it mirrors the old website exactly. This means you have successfully migrated your website to a new domain.</p>
+                
+                <h3>Final Checks and Tips</h3>
+                <p>After completing the migration, take some time to thoroughly check your new website. Ensure that all pages, posts, images, and functionalities are working as expected. Here are a few tips to help you finalize your migration:</p>
+                
+                <ul>
+                    <li><strong>Permalinks:</strong> Go to Settings > Permalinks and resave your permalink structure to ensure all links work correctly.</li>
+                    <li><strong>Check for Broken Links:</strong> Use a plugin like Broken Link Checker to scan your site for any broken links that may have occurred during the migration.</li>
+                    <li><strong>Update DNS Settings:</strong> If you haven't already, update your domain's DNS settings to point to the new website.</li>
+                    <li><strong>Test Forms and Functionality:</strong> Test all contact forms, e-commerce functionality, and other interactive features to ensure they are working properly.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for fourth article -->
+    <div id="modal4" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('modal4')">&times;</span>
+            <div class="modal-header">
+                <h2>V2Ray on PC</h2>
+                <div class="modal-meta">
+                    <span><i class="far fa-calendar-alt"></i> June 30, 2024</span>
+                    <span><i class="far fa-eye"></i> 15,209 views</span>
+                </div>
+                <div class="modal-tags">
+                    <span class="tag">HOW TO</span>
+                    <span class="tag">FREENET</span>
+                </div>
+            </div>
+            <img src="computerv2ray.webp" alt="V2Ray on PC" class="modal-image">
+            <div class="modal-body">
+                <h3>Introduction to V2Ray on PC</h3>
+                <p>V2Ray is a versatile proxy tool that helps you bypass internet restrictions and maintain privacy. Using V2Ray on your PC with V2RayN provides a stable and secure connection for free internet access.</p>
+                
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Windows PC (7/8/10/11)</li>
+                    <li>V2RayN client</li>
+                    <li>V2Ray server configuration</li>
+                    <li>Internet connection</li>
+                </ul>
+                
+                <h3>Installation Steps</h3>
+                <ol>
+                    <li><strong>Download V2RayN:</strong> Get the latest version of V2RayN from the official GitHub repository.</li>
+                    <li><strong>Extract Files:</strong> Unzip the downloaded package to a folder on your computer.</li>
+                    <li><strong>Run V2RayN:</strong> Launch the V2RayN.exe application.</li>
+                </ol>
+                
+                <h3>Configuration</h3>
+                <ol>
+                    <li><strong>Import Server Configuration:</strong>
+                        <ul>
+                            <li>Click on "Server" in the menu</li>
+                            <li>Select "Import Bulk URL from Clipboard"</li>
+                            <li>Paste your V2Ray server configuration</li>
+                        </ul>
+                    </li>
+                    <li><strong>Select Server:</strong> Choose your preferred server from the list</li>
+                    <li><strong>Start Connection:</strong> Click the "Start" button to establish the connection</li>
+                </ol>
+                
+                <h3>Usage Tips</h3>
+                <ul>
+                    <li>For best performance, select a server location closest to you</li>
+                    <li>Enable "Auto Connect" to automatically reconnect if the connection drops</li>
+                    <li>Check the system tray icon for connection status</li>
+                </ul>
+                
+                <h3>Troubleshooting</h3>
+                <p><strong>Connection Issues:</strong> If you can't connect, try these solutions:</p>
+                <ul>
+                    <li>Check your internet connection</li>
+                    <li>Verify the server configuration is correct</li>
+                    <li>Try a different server location</li>
+                    <li>Restart V2RayN</li>
+                </ul>
+                
+                <h3>Advanced Features</h3>
+                <p>V2RayN offers several advanced options:</p>
+                <ul>
+                    <li>Routing rules customization</li>
+                    <li>Multiple server configurations</li>
+                    <li>Traffic statistics</li>
+                    <li>System proxy auto-configuration</li>
+                </ul>
+                
+                <h3>Security Considerations</h3>
+                <p>While V2Ray provides encryption, always:</p>
+                <ul>
+                    <li>Use trusted server configurations</li>
+                    <li>Keep V2RayN updated</li>
+                    <li>Be cautious when downloading configurations</li>
+                </ul>
+                
+                <h3>Conclusion</h3>
+                <p>V2RayN provides an easy way to use V2Ray on your Windows PC. With its simple interface and powerful features, you can enjoy secure and unrestricted internet access in just a few clicks.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-bottom">
+        <div class="footer-container">
+            <!-- Company Info Section -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="images/logo.jpeg" alt="Xenon Tech">
+                    <h3>Xenon Tech</h3>
+                </div>
+                <p class="company-desc">Rising from the ashes with premium VPN solutions for secure and unrestricted internet access.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <a href="index.html">Home</a>
+                    <a href="apps.html">Apps</a>
+                    <a href="howto.html">How-To</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </ul>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> xenontech@gmail.com</li>
+                    <li><i class="fab fa-whatsapp"></i> WhatsApp: +254705470210</li>
+                    <li><i class="fab fa-telegram"></i> Telegram: @xenonlo</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                </ul>
+            </div>
+
+            <!-- Trusted By Section -->
+            <div class="footer-section trusted-section">
+                <h3>Trusted By</h3>
+                <div class="trusted-apps">
+                    <img src="hcimage.jpg" alt="HTTP Custom" title="HTTP Custom">
+                    <img src="images/http.jfif" alt="HTTP Injector" title="HTTP Injector">
+                    <img src="images/dark.png" alt="Dark Tunnel" title="Dark Tunnel">
+                    <img src="images/ev2ray.png" alt="ev2ray" title="ev2ray">
+                    <img src="images/opentunnel.jfif" alt="OpenTunnel" title="OpenTunnel">
+                    <img src="images/nvp.jfif" alt="NVP" title="NVP">
+                    <img src="images/psiphon.png" alt="Psiphon" title="Psiphon">
+                </div>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright">
+                <p>© 2024 Xenon Tech. All rights reserved. Phoenix symbol 𓅓 represents our rebirth in technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // Animate elements when they come into view
+            const animateOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        animateOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.article-card').forEach(card => {
+                animateOnScroll.observe(card);
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
